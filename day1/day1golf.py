@@ -1,0 +1,1 @@
+import collections as q;c=q.Counter;a=(s:=sorted)((l:=[*map(int,open("day1.txt").read().split())])[::2]);print(sum(abs(v-(b:=s(l[1::2]))[i])for i,v in enumerate(a)),sum(k*c(a)[k]*c(b)[k]for k in c(a)))
