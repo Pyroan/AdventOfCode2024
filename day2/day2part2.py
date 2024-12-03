@@ -1,10 +1,8 @@
-signum=lambda a:-(a<0)or a>0
-
 def is_safe(r):
     diffs = [r[i]-r[i-1]for i in range(1,len(r))]
     dampened = False
     for i,diff in enumerate(diffs):
-        if signum(diff) != signum(diffs[0]) or diff == 0 or abs(diff) > 3:
+        if diff * diffs[0]<=0 or abs(diff) > 3:
             if dampened:
                 return False
             if i<len(diffs)-1:
