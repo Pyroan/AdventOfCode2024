@@ -1,15 +1,31 @@
 #!/bin/bash
+set -e
 if [[ $# -lt 1 ]]; then
     echo "You need to specify which day you're running."
     exit 1
 fi
+do_p1=false
+do_p2=false
 cd day$1
 if [[ -n $2 ]]; then
     if [[ $2 -eq 1 ]]; then
-        python day$1.py
+        do_p1=true
     elif [[ $2 -eq 2 ]]; then
-        python day${1}part2.py
+        do_p2=true
     fi
 else
-    python day$1.py && python day${1}part2.py
+    do_p1=true
+    do_p2=true
+fi
+
+unset -e
+if $do_p1 ; then
+echo -e "\033[4;36mPart 1\033[0m"
+python day${1}.py
+echo
+fi
+if $do_p2 ; then
+echo -e "\033[4;36mPart 2\033[0m"
+python day${1}part2.py
+echo
 fi
