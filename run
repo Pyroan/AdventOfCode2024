@@ -18,7 +18,7 @@ else
     do_p2=true
 fi
 
-unset -e
+set +e
 if $do_p1 ; then
 echo -e "\033[4;36mPart 1\033[0m"
 python day${1}.py
